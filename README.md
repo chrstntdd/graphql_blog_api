@@ -18,3 +18,8 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
   * Docs: https://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
+
+
+## Remember
+
+* before running any mix command, set environment variables in `.env` file in the format `export VAR_NAME="VAR_VALUE"` then run the command `source path/to/.env`
