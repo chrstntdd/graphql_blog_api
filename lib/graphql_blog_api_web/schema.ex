@@ -16,12 +16,18 @@ defmodule Blog.Schema do
   end
 
   mutation do
-    @desc "Create a post"
+    @desc "Creat a post"
     field :post, type: :post do
-      ang :title, non_null(:string)
+      arg :title, non_null(:string)
       arg :body, non_null(:string)
-      arg :posted-at, non_null(:string)
+      arg :posted_at, non_null(:time)
+      resolve &Blog.PostResolver.create/2
+    end
 
+    field :user, :user do
+      arg :contact, non_null(:contact_input)
+      arg :password, :string
+  
       resolve &Blog.PostResolver.create/2
     end
   end

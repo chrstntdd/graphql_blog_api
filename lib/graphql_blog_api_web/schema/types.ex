@@ -19,6 +19,22 @@ defmodule Blog.Schema.Types do
   object :post do
     field :title, :string
     field :body, :string
+    field :posted_at, :time
     field :author, :user
+  end
+
+  scalar :time, description: "ISOz time" do
+    parse &Timex.DateFormat.parse(&1.value, "{ISOz}")
+    serialize &Timex.DateFormat.format!(&1, "{ISOz}")
+  end
+
+  enum :contact_type do
+    value :phone
+    value :email
+  end
+
+  input_object :contact_input do
+    field :type, non_null(:contact_type)
+    field :value, non_null(:string)
   end
 end
